@@ -28,8 +28,8 @@ __DATA__
         <table id="test_id" style="border: 1px solid;">
             <thead>
                 <tr>
-                    <th colspan="2"><span id="diff_old_info">t/files/04_a.txt<br />Tue Jul 28 11:59:21 2015</span></th>
-                    <th colspan="2"><span id="diff_new_info">t/files/04_b.txt<br />Tue Jul 28 12:00:22 2015</span></th>
+                    <th colspan="2"><span id="diff_old_info">t/files/04_a.txt<br />.{24}</span></th>
+                    <th colspan="2"><span id="diff_new_info">t/files/04_b.txt<br />.{24}</span></th>
                 </tr>
             </thead>
             <tbody>
