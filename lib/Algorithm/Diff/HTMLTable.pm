@@ -26,7 +26,11 @@ sub diff {
 
     @files{qw/a b/} = @_;
 
+    NAME:
     for my $name ( qw/a b/ ) {
+
+        next NAME if ref $files{$name} && ref $files{$name} eq 'ARRAY';
+
         croak $files{$name} . " is not a file" if !-f $files{$name};
         croak $files{$name} . " is not a readable file" if !-r $files{$name};
     }
@@ -42,8 +46,8 @@ sub _start_table {
     my $self = shift;
     my %files = @_;
 
-    my $old = $self->_file_info( $files{a} );
-    my $new = $self->_file_info( $files{b} );
+    my $old = $self->_file_info( $files{a}, 'old' );
+    my $new = $self->_file_info( $files{b}, 'new' );
     
     my $id = defined $self->{id} ? qq~id="$self->{id}"~ : '';
 
@@ -177,7 +181,13 @@ sub _end_table {
 }
 
 sub _file_info {
-    my ($self, $file) = @_;
+    my ($self, $file, $index) = @_;
+
+    if ( $self->{"title_$index"} ) {
+        return $self->{"title_$index"};
+    }
+
+    return '' if !-f $file;
 
     my $mtime = (stat $file)[9];
     my $date  = _format_date( $mtime );
@@ -196,6 +206,11 @@ sub _read_file {
     my ($self, $file) = @_;
     
     return if !$file;
+
+    if ( $file && ref $file && ref $file eq 'ARRAY' ) {
+        return @{ $file };
+    }
+
     return if !-r $file;
     
     my @lines;
