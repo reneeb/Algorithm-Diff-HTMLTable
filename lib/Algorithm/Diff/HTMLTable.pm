@@ -7,6 +7,7 @@ use warnings;
 
 use Algorithm::Diff;
 use Carp;
+use HTML::Entities;
 use Time::Piece;
 
 our $VERSION = 0.02;
@@ -158,8 +159,8 @@ sub _add_tablerow {
     $color_a = $color_a ? qq~style="color: $color_a;"~ : '';
     $color_b = $color_b ? qq~style="color: $color_b;"~ : '';
 
-    $line_a //= '';
-    $line_b //= '';
+    $line_a = encode_entities( $line_a // '' );
+    $line_b = encode_entities( $line_b // '' );
 
     my $row = qq~
         <tr style="border: 1px solid">
