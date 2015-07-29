@@ -10,7 +10,7 @@ use Carp;
 use HTML::Entities;
 use Time::Piece;
 
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 sub new {
     my ($class, @param) = @_;
