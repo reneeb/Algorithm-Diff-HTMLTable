@@ -18,7 +18,7 @@ my $check = do{ local $/; <DATA> };
 chomp $check;
 
 like_string( $html, qr/$check/ );
-#is_string( $html, $check );
+is_string( $html, $check );
 
 #diag $html;
 
@@ -29,15 +29,15 @@ __DATA__
         <table id="test_id" style="border: 1px solid;">
             <thead>
                 <tr>
-                    <th colspan="2"><span id="diff_old_info">t/files/03_iso8859_1_a.txt<br />.{24}</span></th>
-                    <th colspan="2"><span id="diff_new_info">t/files/03_iso8859_1_b.txt<br />.{24}</span></th>
+                    <th colspan="2"><span id="diff_old_info">t/files/03_iso8859_1_a.txt<br />Tue Jul 28 11:15:26 2015</span></th>
+                    <th colspan="2"><span id="diff_new_info">t/files/03_iso8859_1_b.txt<br />Tue Jul 28 11:16:39 2015</span></th>
                 </tr>
             </thead>
             <tbody>
     
         <tr style="border: 1px solid">
             <td style="background-color: gray">1</td>
-            <td style="color: red;">\x{e4}
+            <td style="color: red;">&auml;
 </td>
             <td style="background-color: gray"></td>
             <td ></td>
@@ -152,7 +152,7 @@ __DATA__
             <td style="background-color: gray">12</td>
             <td style="color: red;"></td>
             <td style="background-color: gray">13</td>
-            <td style="color: green;">\x{fc}
+            <td style="color: green;">&uuml;
 </td>
         </tr>
     
