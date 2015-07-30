@@ -17,6 +17,11 @@ my $html = $diff->diff( @files );
 my $check = do{ local $/; <DATA> };
 chomp $check;
 
+$check =~ s{__files0__}{$files[0]};
+$check =~ s{__files1__}{$files[1]};
+
+$check =~ s{\\}{\\\\}g;
+
 like_string( $html, qr/$check/ );
 #is_string( $html, $check );
 
@@ -29,8 +34,8 @@ __DATA__
         <table id="test_id" style="border: 1px solid;">
             <thead>
                 <tr>
-                    <th colspan="2"><span id="diff_old_info">t/files/03_iso8859_1_a.txt<br />.{24}</span></th>
-                    <th colspan="2"><span id="diff_new_info">t/files/03_iso8859_1_b.txt<br />.{24}</span></th>
+                    <th colspan="2"><span id="diff_old_info">__files0__<br />.{24}</span></th>
+                    <th colspan="2"><span id="diff_new_info">__files1__<br />.{24}</span></th>
                 </tr>
             </thead>
             <tbody>
