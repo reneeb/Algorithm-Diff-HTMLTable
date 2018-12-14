@@ -1,0 +1,99 @@
+[![Build Status](https://travis-ci.org/reneeb/Algorithm-Diff-HTMLTable.svg?branch=master)](https://travis-ci.org/reneeb/Algorithm-Diff-HTMLTable)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/Algorithm-Diff-HTMLTable.png)](http://cpants.charsbar.org/dist/overview/Algorithm-Diff-HTMLTable)
+[![GitHub issues](https://img.shields.io/github/issues/reneeb/Algorithm-Diff-HTMLTable.svg)](https://github.com/reneeb/Algorithm-Diff-HTMLTable/issues)
+
+# NAME
+
+Algorithm::Diff::HTMLTable - Show differences of a file as a HTML table
+
+# VERSION
+
+version 0.04
+
+# SYNOPSIS
+
+    my $builder = Algorithm::Diff::HTMLTable->new(
+       id       => 'diff_table',
+       encoding => 'utf8',
+    );
+    
+    $diff = $builder->diff( $sourcefile, $targetfile );
+
+# DESCRIPTION
+
+# METHODS
+
+## new
+
+    my $builder = Algorithm::Diff::HTMLTable->new(
+       id       => 'diff_table',
+       encoding => 'utf8',
+    );
+
+Available options:
+
+- id
+- encoding
+- eol
+
+## diff
+
+    $diff = $builder->diff( $sourcefile, $targetfile );
+
+
+
+# Development
+
+The distribution is contained in a Git repository, so simply clone the
+repository
+
+```
+$ git clone git://github.com/reneeb/Algorithm-Diff-HTMLTable.git
+```
+
+and change into the newly-created directory.
+
+```
+$ cd Algorithm-Diff-HTMLTable
+```
+
+The project uses [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) to
+build the distribution, hence this will need to be installed before
+continuing:
+
+```
+$ cpanm Dist::Zilla
+```
+
+To install the required prequisite packages, run the following set of
+commands:
+
+```
+$ dzil authordeps --missing | cpanm
+$ dzil listdeps --author --missing | cpanm
+```
+
+The distribution can be tested like so:
+
+```
+$ dzil test
+```
+
+To run the full set of tests (including author and release-process tests),
+add the `--author` and `--release` options:
+
+```
+$ dzil test --author --release
+```
+
+# AUTHOR
+
+Renee Baecker <reneeb@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2015 by Renee Baecker.
+
+This is free software, licensed under:
+
+    The Artistic License 2.0 (GPL Compatible)
