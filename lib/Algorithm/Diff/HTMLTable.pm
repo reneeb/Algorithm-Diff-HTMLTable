@@ -162,6 +162,9 @@ sub _add_tablerow {
     $line_a = encode_entities( $line_a // '' );
     $line_b = encode_entities( $line_b // '' );
 
+    $line_a =~ s{ }{&nbsp;}g;
+    $line_b =~ s{ }{&nbsp;}g;
+
     my $row = qq~
         <tr style="border: 1px solid">
             <td style="background-color: gray">$line_nr_a</td>
