@@ -30,7 +30,8 @@ sub diff {
     NAME:
     for my $name ( qw/a b/ ) {
 
-        next NAME if ref $files{$name} && ref $files{$name} eq 'ARRAY';
+        croak 'Need either filename or array reference' if ref $files{$name} && ref $files{$name} ne 'ARRAY';
+        next NAME if ref $files{$name};
 
         croak $files{$name} . " is not a file" if !-f $files{$name};
         croak $files{$name} . " is not a readable file" if !-r $files{$name};
@@ -211,22 +212,22 @@ sub _read_file {
     
     return if !$file;
 
-    if ( $file && ref $file && ref $file eq 'ARRAY' ) {
+    if ( ref $file && ref $file eq 'ARRAY' ) {
         return @{ $file };
     }
 
     return if !-r $file;
     
     my @lines;
-    if ( open my $fh, '<', $file ) {
-        if ( $self->{encoding} ) {
-            binmode $fh, ':encoding(' . $self->{encoding} . ')';
-        }
-        
-        local $/ = $self->{eol} // "\n";
-        
-        @lines = <$fh>;
+    open my $fh, '<', $file;
+    if ( $self->{encoding} ) {
+        binmode $fh, ':encoding(' . $self->{encoding} . ')';
     }
+    
+    local $/ = $self->{eol} // "\n";
+    
+    @lines = <$fh>;
+    close $fh;
     
     return @lines;
 }
