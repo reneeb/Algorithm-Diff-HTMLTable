@@ -21,7 +21,6 @@ $check =~ s{__files0__}{$files[0]};
 $check =~ s{__files1__}{$files[1]};
 
 like_string( $html, qr/$check/ );
-#is_string( $html, $check );
 
 #diag $html;
 
