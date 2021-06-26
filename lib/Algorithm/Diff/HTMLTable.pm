@@ -5,6 +5,8 @@ package Algorithm::Diff::HTMLTable;
 use strict;
 use warnings;
 
+use 5.010;
+
 use Algorithm::Diff;
 use Carp;
 use HTML::Entities;
