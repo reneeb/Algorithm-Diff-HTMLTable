@@ -20,8 +20,6 @@ chomp $check;
 $check =~ s{__files0__}{$files[0]};
 $check =~ s{__files1__}{$files[1]};
 
-$check =~ s{\\}{\\\\}g;
-
 like_string( $html, qr/$check/ );
 
 #diag $html;
