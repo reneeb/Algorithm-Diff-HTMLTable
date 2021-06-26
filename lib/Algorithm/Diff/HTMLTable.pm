@@ -242,7 +242,7 @@ sub _read_file {
        id       => 'diff_table',
        encoding => 'utf8',
     );
-    
+
     $diff = $builder->diff( $sourcefile, $targetfile );
 
 =head1 METHODS
@@ -267,6 +267,6 @@ Available options:
 =back
 
 =head2 diff
-    
+
     $diff = $builder->diff( $sourcefile, $targetfile );
 

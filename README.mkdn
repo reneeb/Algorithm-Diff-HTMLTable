@@ -16,7 +16,7 @@ version 0.05
        id       => 'diff_table',
        encoding => 'utf8',
     );
-    
+
     $diff = $builder->diff( $sourcefile, $targetfile );
 
 # DESCRIPTION
