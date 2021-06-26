@@ -52,7 +52,7 @@ sub _start_table {
 
     my $old = $self->_file_info( $files{a}, 'old' );
     my $new = $self->_file_info( $files{b}, 'new' );
-    
+
     my $id = defined $self->{id} ? qq~id="$self->{id}"~ : '';
 
     return qq~
@@ -98,9 +98,9 @@ sub _build_table {
         elsif ( !$diff->Items(2) ) {
             my @items_1 = $diff->Items(1);
             my @items_2 = $diff->Items(2);
-            
+
             my $max = @items_1 > @items_2 ? scalar( @items_1 ) : scalar( @items_2 );
-            
+
             for my $index ( 1 .. $max ) {
                 $rows .= $self->_add_tablerow(
                     line_nr_a => $line_nr_a++,
@@ -115,9 +115,9 @@ sub _build_table {
         elsif ( !$diff->Items(1) ) {
             my @items_1 = $diff->Items(1);
             my @items_2 = $diff->Items(2);
-            
+
             my $max = @items_1 > @items_2 ? scalar( @items_1 ) : scalar( @items_2 );
-            
+
             for my $index ( 1 .. $max ) {
                 $rows .= $self->_add_tablerow(
                     line_nr_a => '',
@@ -132,9 +132,9 @@ sub _build_table {
         else {
             my @items_1 = $diff->Items(1);
             my @items_2 = $diff->Items(2);
-            
+
             my $max = @items_1 > @items_2 ? scalar( @items_1 ) : scalar( @items_2 );
-            
+
             for my $index ( 1 .. $max ) {
                 $rows .= $self->_add_tablerow(
                     line_nr_a => $line_nr_a++,
@@ -211,7 +211,7 @@ sub _format_date {
 
 sub _read_file {
     my ($self, $file) = @_;
-    
+
     return if !$file;
 
     if ( ref $file && ref $file eq 'ARRAY' ) {
@@ -219,18 +219,18 @@ sub _read_file {
     }
 
     return if !-r $file;
-    
+
     my @lines;
     open my $fh, '<', $file;
     if ( $self->{encoding} ) {
         binmode $fh, ':encoding(' . $self->{encoding} . ')';
     }
-    
+
     local $/ = $self->{eol} // "\n";
-    
+
     @lines = <$fh>;
     close $fh;
-    
+
     return @lines;
 }
 
