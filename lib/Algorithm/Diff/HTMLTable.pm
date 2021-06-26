@@ -236,6 +236,12 @@ sub _read_file {
 
 =head1 DESCRIPTION
 
+C<Algorithm::Diff::HTMLTable> shows the differences between two files
+side-by-side as an HTML-formatted table.  Removed lines are shown in the
+colour red; added lines are shown in green.  Line numbers of both files are
+shown for added context, as well as the names of the files and the timestamp
+of their most recent change.
+
 =head1 SYNOPSIS
 
     my $builder = Algorithm::Diff::HTMLTable->new(
