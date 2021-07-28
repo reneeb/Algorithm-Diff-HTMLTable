@@ -17,7 +17,6 @@ my $html = $diff->diff( @files );
 my $check = do{ local $/; <DATA> };
 chomp $check;
 
-#like_string( $html, qr/$check/ );
 is_string( $html, $check );
 
 #diag $html;
